@@ -13,9 +13,6 @@ app.get('/', (req,res) => {
     res.status(200).json({status: true, message: "You are reach our server"})
 })
 
-
-//Routers Define here
-
 const UserRouter = require('./app/routes/user.route');
 app.use('/user', UserRouter);
 
@@ -32,7 +29,8 @@ mongoose.connect(
   db.once("open", async () => {
     console.log("Mongo: successfully connected to db");
   });
+  const PORT = process.env.PORT || 5000;
 
-  app.listen(process.env.PORT, () => {
+  app.listen(PORT, () => {
     console.log("Magic happens on port: " + process.env.PORT);
   });
